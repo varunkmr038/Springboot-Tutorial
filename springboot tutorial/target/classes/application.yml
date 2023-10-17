@@ -1,0 +1,73 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/springboot
+    password: varun
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true  '
+
+welcome:
+  message: Welcome to Spring boot Application
+
+# for actuators endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env,beans
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: qa
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/springboot-qa
+    password: varun
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true  '
+welcome:
+  message: Welcome to Spring boot Application
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/springboot-prod
+    password: varun
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true  '
+welcome:
+  message: Welcome to Spring boot Application
+
+
+
